@@ -19,8 +19,10 @@ const reducer = (state = initialState, action) => {
   switch (action.type) {
     case "CITIES": {
       state = { cities: action.cities };
+      return state;
     }
   }
+  return state;
 };
 const store = createStore(reducer, applyMiddleware(thunk));
 

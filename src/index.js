@@ -1,25 +1,17 @@
 import React from "react";
 import { render } from "react-dom";
-import axios from "axios";
+// import axios from "axios";
 import { connect, Provider } from "react-redux";
 import store from "./store";
+import { getCities } from "./store";
 
 class CitiesList extends React.Component {
-  constructor() {
-    super();
-    this.state = {
-      cities: [],
-    };
-  }
   async componentDidMount() {
-    const response = await axios.get("/api/cities");
-    const data = response.data;
-    // console.log("data", data);
-    this.setState({ cities: data });
+    this.props.fetchCities();
   }
   render() {
     console.log("state", this.state);
-    const citiesEls = this.state.cities.map((city) => {
+    const citiesEls = this.props.cities.map((city) => {
       return <li key={city.id}>{city.name}</li>;
     });
     return (
@@ -30,7 +22,20 @@ class CitiesList extends React.Component {
     );
   }
 }
-const ConnectedCities = connect((state) => state, null)(CitiesList);
+
+const mapState = (reduxState) => {
+  return {
+    cities: reduxState.cities,
+  };
+};
+
+const mapDispatch = (dispatch) => {
+  return {
+    fetchCities: () => dispatch(getCities()),
+  };
+};
+
+const ConnectedCities = connect(mapState, mapDispatch)(CitiesList);
 render(
   <Provider store={store}>
     <ConnectedCities />
