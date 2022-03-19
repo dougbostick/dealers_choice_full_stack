@@ -7,11 +7,24 @@ const sequelize = new Sequelize(
 );
 
 app.use("/dist", express.static(path.join(__dirname, "dist")));
+app.use(express.json());
 app.get("/", (req, res) => res.sendFile(path.join(__dirname, "index.html")));
+
 //routes
 app.get("/api/cities", async (req, res, next) => {
   try {
     res.send(await Cities.findAll());
+  } catch (ex) {
+    next(ex);
+  }
+});
+
+app.post("/api/cities", async (req, res, next) => {
+  try {
+    console.log("post route", req.body);
+    const created = req.body.name;
+    const newCity = await Cities.create({ name: created });
+    res.status(201).send(newCity);
   } catch (ex) {
     next(ex);
   }
