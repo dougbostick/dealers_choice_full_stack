@@ -24,12 +24,11 @@ export class Details extends React.Component {
     console.log("DETAILS", this.state);
     return (
       <div>
-        {/* <h1>City Details: {cityInfo}</h1> */}
         {city ? (
           <div>
             <h1>City Details: {city.name}</h1>
-            <div>Country: {city.country}</div>
-            <div>Population: {city.population}</div>
+            <div>Country: {city.country || "unknown"}</div>
+            <div>Population: {city.population || "beats me"}</div>
           </div>
         ) : (
           <h1> City not Found</h1>
