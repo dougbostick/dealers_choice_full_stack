@@ -1,16 +1,25 @@
 import React from "react";
 import { connect } from "react-redux";
-import { getCities } from "./store";
+import { getCities, deleteCity } from "./store";
 import { ConnectedPost } from "./PostForm";
+import { Link, Route } from "react-router-dom";
 
 class CitiesList extends React.Component {
   async componentDidMount() {
-    this.props.fetchCities();
+    if (!this.props.loaded) {
+      this.props.fetchCities();
+    }
   }
+
   render() {
     console.log("state", this.state);
     const citiesEls = this.props.cities.map((city) => {
-      return <li key={city.id}>{city.name}</li>;
+      return (
+        <li key={city.id}>
+          <Link to={`/details/${city.id}`}> {city.name} </Link>
+          <button onClick={() => this.props.deleteCity(city.id)}>x</button>
+        </li>
+      );
     });
     return (
       <div>
@@ -25,12 +34,14 @@ class CitiesList extends React.Component {
 const mapState = (reduxState) => {
   return {
     cities: reduxState.cities,
+    loaded: reduxState.loaded,
   };
 };
 
 const mapDispatch = (dispatch) => {
   return {
     fetchCities: () => dispatch(getCities()),
+    deleteCity: (id) => dispatch(deleteCity(id)),
   };
 };
 

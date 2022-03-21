@@ -8,6 +8,7 @@ const sequelize = new Sequelize(
 
 app.use("/dist", express.static(path.join(__dirname, "dist")));
 app.use(express.json());
+
 app.get("/", (req, res) => res.sendFile(path.join(__dirname, "index.html")));
 
 //routes
@@ -25,6 +26,19 @@ app.post("/api/cities", async (req, res, next) => {
     const created = req.body.name;
     const newCity = await Cities.create({ name: created });
     res.status(201).send(newCity);
+  } catch (ex) {
+    next(ex);
+  }
+});
+
+app.delete("/api/cities/:id", async (req, res, next) => {
+  try {
+    await Cities.destroy({
+      where: {
+        id: req.params.id,
+      },
+    });
+    res.sendStatus(204);
   } catch (ex) {
     next(ex);
   }
@@ -52,7 +66,7 @@ const init = async () => {
   await Promise.all([
     Cities.create({
       name: "NYC",
-      country: "United State",
+      country: "United States",
       population: 8400000,
     }),
     Cities.create({

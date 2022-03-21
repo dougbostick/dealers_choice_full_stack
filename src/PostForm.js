@@ -1,7 +1,6 @@
 import React from "react";
-import axios from "axios";
 import { connect } from "react-redux";
-import store from "./store";
+import { addCity } from "./store";
 
 export class PostForm extends React.Component {
   constructor() {
@@ -14,11 +13,7 @@ export class PostForm extends React.Component {
 
   async create(ev) {
     ev.preventDefault();
-    const response = await axios.post("/api/cities", {
-      name: this.state.name,
-    });
-    const city = response.data;
-    store.dispatch({ type: "ADD_CITY", city });
+    this.props.addCity(this.state.name);
     this.setState({ name: "" });
   }
 
@@ -36,6 +31,11 @@ export class PostForm extends React.Component {
   }
 }
 
-const mapState = (reduxState) => reduxState;
+//const mapState = (reduxState) => reduxState;
+const mapDispatch = (dispatch) => {
+  return {
+    addCity: (name) => dispatch(addCity(name)),
+  };
+};
 
-export const ConnectedPost = connect(mapState)(PostForm);
+export const ConnectedPost = connect(null, mapDispatch)(PostForm);
