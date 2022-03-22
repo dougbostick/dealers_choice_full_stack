@@ -15,10 +15,18 @@ class CitiesList extends React.Component {
     console.log("state", this.state);
     const citiesEls = this.props.cities.map((city) => {
       return (
-        <li key={city.id}>
-          <Link to={`/details/${city.id}`}> {city.name} </Link>
-          <button onClick={() => this.props.deleteCity(city.id)}>x</button>
-        </li>
+        <div className="list">
+          <li key={city.id}>
+            <Link to={`/details/${city.id}`}> {city.name} </Link>
+            <button
+              onClick={() => this.props.deleteCity(city.id)}
+              className="deletebutton"
+            >
+              {" "}
+              x
+            </button>
+          </li>
+        </div>
       );
     });
     return (

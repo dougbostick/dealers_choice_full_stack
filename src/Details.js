@@ -25,7 +25,7 @@ export class Details extends React.Component {
     return (
       <div>
         {city ? (
-          <div>
+          <div className="details">
             <h1>City Details: {city.name}</h1>
             <div>Country: {city.country || "unknown"}</div>
             <div>Population: {city.population || "beats me"}</div>
@@ -33,7 +33,9 @@ export class Details extends React.Component {
         ) : (
           <h1> City not Found</h1>
         )}
-        <Link to="/">Back to Home</Link>
+        <Link to="/" className="home">
+          Back to Home
+        </Link>
       </div>
     );
   }

@@ -22,10 +22,11 @@ export class PostForm extends React.Component {
     return (
       <form onSubmit={this.create}>
         <input
+          placeholder="input city"
           value={name}
           onChange={(ev) => this.setState({ name: ev.target.value })}
         />
-        <button>Submit</button>
+        <button className="submit">Submit</button>
       </form>
     );
   }

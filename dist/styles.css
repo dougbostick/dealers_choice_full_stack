@@ -1,3 +1,69 @@
+body {
+  display: flex;
+  /* justify-content: center; */
+  background-image: url(https://m.media-amazon.com/images/I/71kEJE12iqL._AC_SL1500_.jpg);
+}
 h1 {
-  color: red;
+  border-left: solid 5px black;
+  text-align: center;
+  background-image: linear-gradient(to right, azure, skyblue);
+  justify-content: center;
+  font-family: Helvetica;
+  box-shadow: 2px 2px 4px 1px skyblue;
+}
+li {
+  list-style: none;
+  font-family: copperplate;
+}
+
+.deletebutton {
+  color: white;
+  margin: 10px;
+  font-family: monaco;
+  background-color: skyblue;
+  border: solid black 2px;
+  font-weight: bold;
+  font-size: 15px;
+}
+
+.list {
+  font-size: 2rem;
+  justify-content: start;
+  margin: 10px;
+  text-shadow: 2px 2px 4px skyblue;
+}
+
+a:link {
+  text-decoration: none;
+}
+
+.details div {
+  font-size: 25px;
+  margin: 25px;
+  font-family: verdana;
+  text-shadow: 2px 2px 4px skyblue;
+  font-weight: bold;
+  /* background-image: linear-gradient(to right, azure, skyblue); */
+  /* box-shadow: 2px 2px 4px 1px skyblue; */
+}
+
+.home {
+  font-size: 20px;
+  font-weight: bold;
+  text-shadow: 2px 2px 4px skyblue;
+  padding: 75px;
+}
+
+.submit {
+  margin: 10px;
+  font-family: monaco;
+  background-color: skyblue;
+}
+
+form {
+  margin: 10px;
+}
+
+input {
+  text-align: center;
 }
