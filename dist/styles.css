@@ -4,12 +4,15 @@ body {
   background-image: url(https://m.media-amazon.com/images/I/71kEJE12iqL._AC_SL1500_.jpg);
 }
 h1 {
-  border-left: solid 5px black;
-  text-align: center;
-  background-image: linear-gradient(to right, azure, skyblue);
-  justify-content: center;
   font-family: Helvetica;
-  box-shadow: 2px 2px 4px 1px skyblue;
+  text-align: center;
+  justify-content: center;
+  border-left: solid 5px black;
+  /* background-image: linear-gradient(to right, azure, skyblue);
+  box-shadow: 2px 2px 4px 1px skyblue; */
+  border-radius: 80px;
+  background: linear-gradient(145deg, #6e62ff, #5d53e6);
+  box-shadow: 22px 22px 53px #544bd1, -22px -22px 53px #7a6dff;
 }
 li {
   list-style: none;
@@ -31,6 +34,9 @@ li {
   justify-content: start;
   margin: 10px;
   text-shadow: 2px 2px 4px skyblue;
+  -webkit-animation: scale-up-hor-left 0.4s cubic-bezier(0.39, 0.575, 0.565, 1)
+    both;
+  animation: scale-up-hor-left 0.4s cubic-bezier(0.39, 0.575, 0.565, 1) both;
 }
 
 a:link {
@@ -43,6 +49,9 @@ a:link {
   font-family: verdana;
   text-shadow: 2px 2px 4px skyblue;
   font-weight: bold;
+  -webkit-animation: scale-up-hor-left 0.4s cubic-bezier(0.39, 0.575, 0.565, 1)
+    both;
+  animation: scale-up-hor-left 0.4s cubic-bezier(0.39, 0.575, 0.565, 1) both;
   /* background-image: linear-gradient(to right, azure, skyblue); */
   /* box-shadow: 2px 2px 4px 1px skyblue; */
 }
@@ -66,4 +75,33 @@ form {
 
 input {
   text-align: center;
+}
+
+@-webkit-keyframes scale-up-hor-left {
+  0% {
+    -webkit-transform: scaleX(0.4);
+    transform: scaleX(0.4);
+    -webkit-transform-origin: 0% 0%;
+    transform-origin: 0% 0%;
+  }
+  100% {
+    -webkit-transform: scaleX(1);
+    transform: scaleX(1);
+    -webkit-transform-origin: 0% 0%;
+    transform-origin: 0% 0%;
+  }
+}
+@keyframes scale-up-hor-left {
+  0% {
+    -webkit-transform: scaleX(0.4);
+    transform: scaleX(0.4);
+    -webkit-transform-origin: 0% 0%;
+    transform-origin: 0% 0%;
+  }
+  100% {
+    -webkit-transform: scaleX(1);
+    transform: scaleX(1);
+    -webkit-transform-origin: 0% 0%;
+    transform-origin: 0% 0%;
+  }
 }
